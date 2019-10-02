@@ -2,11 +2,8 @@ const BundleSizeMetric =  require("./metrics/BundleSize.metric");
 const CoverageMetric =  require("./metrics/Coverage.metric");
 const HasBuildMetric =  require("./metrics/HasBuild.metric");
 const HasChangelogMetric =  require("./metrics/HasChangelog.metric");
-const HasDeployTasksMetric =  require("./metrics/HasDeployTasks.metric");
-const HasFeedzaiConfigMetric =  require("./metrics/HasFeedzaiConfig.metric");
 const HasTestAndLinterMetric =  require("./metrics/HasTestAndLinter.metric");
 const HasReadmeMetric =  require("./metrics/HasReadme.metric");
-const HasPublishConfigMetric =  require("./metrics/HasPublishConfig.metric");
 const IgnoredEslintMetric =  require("./metrics/IgnoredEslint.metric");
 const JestVersionMetric =  require("./metrics/JestVersion.metric");
 const NumberCustomRulesMetric =  require("./metrics/NumberCustomRules.metric");
@@ -31,11 +28,8 @@ module.exports = {
     CoverageMetric,
     HasBuildMetric,
     HasChangelogMetric,
-    HasDeployTasksMetric,
-    HasFeedzaiConfigMetric,
     HasTestAndLinterMetric,
     HasReadmeMetric,
-    HasPublishConfigMetric,
     IgnoredEslintMetric,
     JestVersionMetric,
     NumberCustomRulesMetric,
@@ -45,7 +39,6 @@ module.exports = {
     ReactVersionMetric,
     WebpackVersionMetric
   ],
-
   reporters: {
     active: [
       "console",
