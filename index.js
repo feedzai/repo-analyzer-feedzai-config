@@ -1,3 +1,18 @@
+const BundleSizeMetric =  require("./metrics/BundleSize.metric");
+const CoverageMetric =  require("./metrics/Coverage.metric");
+const HasBuildMetric =  require("./metrics/HasBuild.metric");
+const HasChangelogMetric =  require("./metrics/HasChangelog.metric");
+const HasTestAndLinterMetric =  require("./metrics/HasTestAndLinter.metric");
+const HasReadmeMetric =  require("./metrics/HasReadme.metric");
+const IgnoredEslintMetric =  require("./metrics/IgnoredEslint.metric");
+const JestVersionMetric =  require("./metrics/JestVersion.metric");
+const NumberCustomRulesMetric =  require("./metrics/NumberCustomRules.metric");
+const NumberDependenciesMetric =  require("./metrics/NumberDependencies.metric");
+const NumberDevDependenciesMetric =  require("./metrics/NumberDevDependencies.metric");
+const ReactDomVersionMetric =  require("./metrics/ReactDomVersion.metric");
+const ReactVersionMetric =  require("./metrics/ReactVersion.metric");
+const WebpackVersionMetric =  require("./metrics/WebpackVersion.metric");
+
 
 /**
  * index
@@ -9,22 +24,21 @@
 module.exports = {
 
   metrics: [
-    "./metrics/BundleSize.metric.js",
-    "./metrics/Coverage.metric.js",
-    "./metrics/HasBuild.metric.js",
-    "./metrics/HasChangelog.metric.js",
-    "./metrics/HasTestAndLinter.metric.js",
-    "./metrics/HasReadme.metric.js",
-    "./metrics/IgnoredEslint.metric.js",
-    "./metrics/JestVersion.metric.js",
-    "./metrics/NumberCustomRules.metric.js",
-    "./metrics/NumberDependencies.metric.js",
-    "./metrics/NumberDevDependencies.metric.js",
-    "./metrics/ReactDomVersion.metric.js",
-    "./metrics/ReactVersion.metric.js",
-    "./metrics/WebpackVersion.metric.js",
-  ].map(require.resolve),
-
+    BundleSizeMetric,
+    CoverageMetric,
+    HasBuildMetric,
+    HasChangelogMetric,
+    HasTestAndLinterMetric,
+    HasReadmeMetric,
+    IgnoredEslintMetric,
+    JestVersionMetric,
+    NumberCustomRulesMetric,
+    NumberDependenciesMetric,
+    NumberDevDependenciesMetric,
+    ReactDomVersionMetric,
+    ReactVersionMetric,
+    WebpackVersionMetric
+  ],
   reporters: {
     active: [
       "console",
