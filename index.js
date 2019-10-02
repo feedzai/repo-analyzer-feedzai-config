@@ -23,7 +23,7 @@ module.exports = {
     "./metrics/ReactDomVersion.metric.js",
     "./metrics/ReactVersion.metric.js",
     "./metrics/WebpackVersion.metric.js",
-  ],
+  ].map(require.resolve),
 
   reporters: {
     active: [
