@@ -1,6 +1,6 @@
 {
   "name": "@feedzai/feedzai-config",
-  "version": "1.0.20",
+  "version": "1.0.22",
   "description": "Feedzai's config for repo-analyzer",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "javascript"
   ],
   "dependencies": {
-    "@feedzai/analyzer-utilities": "^1.0.16",
+    "@feedzai/analyzer-utilities": "^1.0.21",
     "has-yarn": "^2.1.0",
     "he": "^1.2.0",
     "lcov-parse": "^1.0.0",

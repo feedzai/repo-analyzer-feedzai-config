@@ -13,11 +13,8 @@ module.exports = {
     "./metrics/Coverage.metric.js",
     "./metrics/HasBuild.metric.js",
     "./metrics/HasChangelog.metric.js",
-    "./metrics/HasDeployTasks.metric.js",
-    "./metrics/HasFeedzaiConfig.metric.js",
     "./metrics/HasTestAndLinter.metric.js",
     "./metrics/HasReadme.metric.js",
-    "./metrics/HasPublishConfig.metric.js",
     "./metrics/IgnoredEslint.metric.js",
     "./metrics/JestVersion.metric.js",
     "./metrics/NumberCustomRules.metric.js",
@@ -26,7 +23,7 @@ module.exports = {
     "./metrics/ReactDomVersion.metric.js",
     "./metrics/ReactVersion.metric.js",
     "./metrics/WebpackVersion.metric.js",
-  ].map(require.resolve),
+  ],
 
   reporters: {
     active: [
