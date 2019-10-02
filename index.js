@@ -44,7 +44,7 @@ module.exports = {
     ReactDomVersionMetric,
     ReactVersionMetric,
     WebpackVersionMetric
-  ].map(require.resolve),
+  ],
 
   reporters: {
     active: [
