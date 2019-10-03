@@ -1,8 +1,8 @@
 
 var _ = require("lodash");
-const { METRIC_GROUPS } = require("analyzer-utilities");
+const { METRIC_GROUPS } = require("@feedzai/analyzer-utilities");
 
-const BaseMetric = require("analyzer-utilities/Base.metric");
+const BaseMetric = require("@feedzai/analyzer-utilities/Base.metric");
 
 
 /**
