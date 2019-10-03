@@ -10,10 +10,10 @@ const hasYarn = require("has-yarn");
 const {
     METRIC_GROUPS,
     executeCommand
-} = require("analyzer-utilities");
+} = require("@feedzai/analyzer-utilities");
 
 
-const BaseMetric = require("analyzer-utilities/Base.metric");
+const BaseMetric = require("@feedzai/analyzer-utilities/Base.metric");
 
 
 /**

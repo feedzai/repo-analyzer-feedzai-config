@@ -2,9 +2,9 @@ const logger = require("pino")({
     prettyPrint: { colorize: true },
     translateTime: true
 });
-const { METRIC_GROUPS, executeCommandGetOutput } = require("analyzer-utilities");
+const { METRIC_GROUPS, executeCommandGetOutput } = require("@feedzai/analyzer-utilities");
 
-const BaseMetric = require("analyzer-utilities/Base.metric");
+const BaseMetric = require("@feedzai/analyzer-utilities/Base.metric");
 
 
 /**

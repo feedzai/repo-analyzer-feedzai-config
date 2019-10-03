@@ -1,8 +1,8 @@
 
 const _ = require("lodash");
-const { METRIC_GROUPS, loadEslintFile } = require("analyzer-utilities");
+const { METRIC_GROUPS, loadEslintFile } = require("@feedzai/analyzer-utilities");
 
-const BaseMetric = require("analyzer-utilities/Base.metric");
+const BaseMetric = require("@feedzai/analyzer-utilities/Base.metric");
 
 
 /**

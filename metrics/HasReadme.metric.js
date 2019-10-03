@@ -1,7 +1,7 @@
 
-const { METRIC_GROUPS , fileExists } = require("analyzer-utilities");
+const { METRIC_GROUPS , fileExists } = require("@feedzai/analyzer-utilities");
 
-const BaseMetric = require("analyzer-utilities/Base.metric");
+const BaseMetric = require("@feedzai/analyzer-utilities/Base.metric");
 
 
 /**

@@ -8,11 +8,11 @@ const {
     METRIC_GROUPS,
     executeCommand,
     getFileFolder,
-} = require("analyzer-utilities");
+} = require("@feedzai/analyzer-utilities");
 var fs = require("fs");
-const { getRepoName } = require("analyzer-utilities/repoMethods");
+const { getRepoName } = require("@feedzai/analyzer-utilities/repoMethods");
 
-const BaseMetric = require("analyzer-utilities/Base.metric");
+const BaseMetric = require("@feedzai/analyzer-utilities/Base.metric");
 
 /**
  * BundleSizeMetric
