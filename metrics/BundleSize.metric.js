@@ -53,8 +53,7 @@ class BundleSizeMetric extends BaseMetric {
      */
     async verify() {
         if (_.isObject(this.getPackage()) && _.isObject(this.getPackage().scripts)
-            && _.isString(this.getPackage().scripts.build)
-            && this.getPackage().scripts.build.includes("webpack")) {
+            && _.isString(this.getPackage().scripts.build)) {
             if (!isInstalled(this.repoFolder)) {
                 logger.error(`Must run 'npm install' on '${this.getRepoFolder()}' 1st`);
                 return false;
@@ -127,29 +126,51 @@ class BundleSizeMetric extends BaseMetric {
      *  @returns {Object}
      */
     async execute() {
-        return await this.runWebpack().then((stats) => {
-            if (!_.isObject(stats)) {
-                return null;
-            }
-            let sizeCss = 0, sizeJs = 0;
+        if (this.getPackage().scripts.build.includes("rollup")) {
+            return await getFileFolder(`${this.getRepoFolder()}`, "./build/bundle-sizes.json").then((fileOutput) => {
+                const bundlestats = JSON.parse(fileOutput);
+                console.log(bundlestats);
+                let jsbundlesize = 0;
+                bundlestats.bundleSize.forEach(element => {
+                    jjsbundlesize += element.size;
+                });
+                return {
+                    result: {
 
-            stats.assets.forEach((asset) => {
-                if (asset.name.includes(".css")) {
-                    sizeCss += asset.size;
-                } else if (asset.name.includes(".js")) {
-                    sizeJs += asset.size;
+                        // here I divide by 1024 to times in order to covert from bytes to MBytes
+                        // After having the result in MB, it multiply by 100 and divide by 100 to have decimal palces in the output
+                        js: Math.round((jsbundlesize / 1024 / 1024) * 100) / 100;
+                        css: 0
+                    }
                 }
+
             });
-            return {
-                result: {
-
-                    // here I divide by 1024 to times in order to covert from bytes to MBytes
-                    // After having the result in MB, it multiply by 100 and divide by 100 to have decimal palces in the output
-                    css: Math.round((sizeCss / 1024 / 1024) * 100) / 100,
-                    js: Math.round((sizeJs / 1024 / 1024) * 100) / 100
+        } else {
+            return await this.runWebpack().then((stats) => {
+                if (!_.isObject(stats)) {
+                    return null;
                 }
-            };
-        });
+                let sizeCss = 0, sizeJs = 0;
+
+                stats.assets.forEach((asset) => {
+                    if (asset.name.includes(".css")) {
+                        sizeCss += asset.size;
+                    } else if (asset.name.includes(".js")) {
+                        sizeJs += asset.size;
+                    }
+                });
+                return {
+                    result: {
+
+                        // here I divide by 1024 to times in order to covert from bytes to MBytes
+                        // After having the result in MB, it multiply by 100 and divide by 100 to have decimal palces in the output
+                        css: Math.round((sizeCss / 1024 / 1024) * 100) / 100,
+                        js: Math.round((sizeJs / 1024 / 1024) * 100) / 100
+                    }
+                };
+            });
+        }
+
     }
 }
 
