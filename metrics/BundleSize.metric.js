@@ -133,14 +133,14 @@ class BundleSizeMetric extends BaseMetric {
                 const bundlestats = JSON.parse(fileOutput);
                 let jsbundlesize = 0;
                 bundlestats.bundleSizes.forEach(element => {
-                    if (element.filename == "react.production.min.js")
+                    if (element.filename == "react.production.min.js" || element.filename=="react-dom.production.min.js")
                         jsbundlesize = element.size
                 });
                 return {
                     result: {
                         // Divide by 1000 to get the kb size
                         // After having the result in MB, it multiply by 100 and divide by 100 to have decimal palces in the output
-                        js: Math.round((jsbundlesize / 1000) * 100) / 100,
+                        js: Math.round((jsbundlesize / 1000/1000) * 100) / 100,
                         css: 0
                     }
                 }
