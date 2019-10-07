@@ -127,25 +127,23 @@ class BundleSizeMetric extends BaseMetric {
      */
     async execute() {
         if (this.getPackage().scripts.build.includes("rollup")) {
-            const result = await executeCommand(this.getRepoFolder(),"yarn build");
-            
-            console.log(result);
+            const result = await executeCommand(this.getRepoFolder(), "yarn build react/index,react-dom/index --type=UMD");
 
             return await getFileFolder(`${this.getRepoFolder()}`, "./build/bundle-sizes.json").then((fileOutput) => {
                 const bundlestats = JSON.parse(fileOutput);
                 let jsbundlesize = 0;
                 bundlestats.bundleSizes.forEach(element => {
-                    jsbundlesize += element.size;
+                    if (element.filename == "react.production.min.js")
+                        jsbundlesize = element.size
                 });
                 return {
                     result: {
-                        // here I divide by 1024 to times in order to covert from bytes to MBytes
+                        // Divide by 1000 to get the kb size
                         // After having the result in MB, it multiply by 100 and divide by 100 to have decimal palces in the output
-                        js: Math.round((jsbundlesize / 1024 / 1024) * 100) / 100,
+                        js: Math.round((jsbundlesize / 1000) * 100) / 100,
                         css: 0
                     }
                 }
-
             });
         } else {
             return await this.runWebpack().then((stats) => {
