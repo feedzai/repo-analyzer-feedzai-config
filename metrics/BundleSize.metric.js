@@ -127,19 +127,21 @@ class BundleSizeMetric extends BaseMetric {
      */
     async execute() {
         if (this.getPackage().scripts.build.includes("rollup")) {
+            const result = await executeCommand(this.getRepoFolder(),"yarn build");
+            
+            console.log(result);
+
             return await getFileFolder(`${this.getRepoFolder()}`, "./build/bundle-sizes.json").then((fileOutput) => {
                 const bundlestats = JSON.parse(fileOutput);
-                console.log(bundlestats);
                 let jsbundlesize = 0;
-                bundlestats.bundleSize.forEach(element => {
-                    jjsbundlesize += element.size;
+                bundlestats.bundleSizes.forEach(element => {
+                    jsbundlesize += element.size;
                 });
                 return {
                     result: {
-
                         // here I divide by 1024 to times in order to covert from bytes to MBytes
                         // After having the result in MB, it multiply by 100 and divide by 100 to have decimal palces in the output
-                        js: Math.round((jsbundlesize / 1024 / 1024) * 100) / 100;
+                        js: Math.round((jsbundlesize / 1024 / 1024) * 100) / 100,
                         css: 0
                     }
                 }

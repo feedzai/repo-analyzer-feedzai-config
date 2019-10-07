@@ -1,6 +1,6 @@
 {
   "name": "@feedzai/feedzai-config",
-  "version": "1.0.25",
+  "version": "1.0.30",
   "description": "Feedzai's config for repo-analyzer",
   "main": "index.js",
   "scripts": {

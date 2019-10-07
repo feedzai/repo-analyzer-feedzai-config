@@ -46,7 +46,7 @@ module.exports = {
       "json",
       "elastic"
     ],
-    "formated-file": "./tmp/report.txt",
+    "formated-file": "report.txt",
     "elastic": {
       "address": "localhost",
       "port": 9200,
@@ -57,7 +57,7 @@ module.exports = {
     },
     console: {},
     json: {
-      "output-file": "./tmp/report.json"
+      "output-file": "report.json"
     }
   }
 };
