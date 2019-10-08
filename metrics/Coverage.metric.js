@@ -53,7 +53,8 @@ class CoverageMetric extends BaseMetric {
      *  @returns {boolean}
      */
     async verify() {
-        if(this.getPackage().scripts.build.includes("rollup")){
+        if (_.isObject(this.getPackage().scripts) && _.isString(this.getPackage().scripts.build) 
+        && this.getPackage().scripts.build.includes("rollup")) {
             return false;
         }
         return _.isString(this.getAllDependencies().jest);
