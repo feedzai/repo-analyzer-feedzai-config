@@ -10,7 +10,10 @@ In our application we will use elasticsearch to store and fetch the results from
 
 **“Kibana is an open source data visualization plugin for Elasticsearch. It provides visualization capabilities on top of the content indexed on an Elasticsearch cluster. Users can create bar, line and scatter plots, or pie charts and maps on top of large volumes of data.”** - wikipedia.
 
-This is the are the kind of results we are going to achieve by the end of this article:
+This is the are the kind of results we are going to achieve by the end of this guide:
+
+![demo](https://raw.githubusercontent.com/feedzai/repo-analyzer-feedzai-config/master/img/demo.png)
+
 
 
 ## Installation
@@ -21,7 +24,7 @@ If you have already an instance of elasticsearch on your computer, you may skip 
 The installation is pretty straightforward. I am not going to cover it in detail in this article. However, I am going to provide the overall process.
 I would recommend you to visit the official installation guide. It's the best way to be always up to date.
 
-Independent on where you install your elasticsearch cluster, you have to follow 3 steps. The code I am to present works in ubuntu, if you are using a mac it’s very similar.
+Independent on where you install your elasticsearch cluster, you have to follow 3 steps. The code I am going to present works in ubuntu, if you are using a mac it’s very similar.
 
 1. Download the elasticsearch executable for your system. In this case I am going to use ubuntu. 
     - curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.3.2-linux-x86_64.tar.gz
@@ -35,7 +38,7 @@ cd elasticsearch-7.3.2/bin
 ./elasticsearch
 ```
 
-Kibana is installed the same way as elasticsearch, you can find more details here
+Kibana is installed the same way as elasticsearch, you can find more details [here](https://www.elastic.co/guide/en/kibana/current/install.html)
 
 
 ### Verify your install
@@ -46,6 +49,9 @@ curl localhost:9200
 ```
 
 If you visit http://localhost:5601/ you should get the following screen: 
+
+![demo](https://github.com/feedzai/repo-analyzer-feedzai-config/blob/master/img/kibana.png?raw=true)
+
 
 Now you are ready to get started with kibana!
 
@@ -80,9 +86,12 @@ If your instance is protected you can always pass the username and password usin
 4. Press the button **Import the right bottom corner**
 
 You should see something like this:
+![demo](https://github.com/feedzai/repo-analyzer-feedzai-config/blob/master/img/savedObjs.png?raw=true)
 
 ## Test
 If you navigate into the Visualizations tab you can see that the configurations have been loaded successfully.
+
+![demo](https://github.com/feedzai/repo-analyzer-feedzai-config/blob/master/img/visualizations.png?raw=true)
 
 If you reached, congratulations! You have successfully imported our default configuration.
 Continue reading the article here
