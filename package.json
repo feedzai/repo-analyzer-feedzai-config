@@ -4,7 +4,8 @@
   "description": "Feedzai's config for repo-analyzer",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ./*.js"
   },
   "author": "Henrique Dias",
   "license": "MIT",
@@ -16,6 +17,10 @@
   ],
   "dependencies": {
     "@feedzai/analyzer-utilities": "^1.0.21",
+    "@feedzai/eslint-config-feedzai-react": "^4.0.1",
+    "eslint-plugin-jest": "^22.19.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.16.0",
     "has-yarn": "^2.1.0",
     "he": "^1.2.0",
     "lcov-parse": "^1.0.0",
@@ -26,7 +31,11 @@
     "strip-json-comments": "^3.0.1",
     "yargs": "^14.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@feedzai/eslint-config-feedzai": "^4.0.1",
+    "eslint": "^6.5.1",
+    "eslint-plugin-import": "^2.18.2"
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:feedzai/repo-analyzer-feedzai-config.git"
