@@ -1,4 +1,5 @@
 # repo-analyzer-config
+[![Build Status](https://travis-ci.com/feedzai/repo-analyzer-feedzai-config.svg?branch=master)](https://travis-ci.com/feedzai/repo-analyzer-feedzai-config)
 
 Default configuration project for the [repo-analyzer](https://github.com/feedzai/repo-analyzer) tool.
 
