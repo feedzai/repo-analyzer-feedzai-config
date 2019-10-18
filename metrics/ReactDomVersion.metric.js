@@ -26,7 +26,7 @@ class ReactDomVersionMetric extends BaseMetric {
             "result": {
                 "type": "float"
             }
-        }
+        };
     }
     async verify() {
         if (_.isString(this.getAllDependencies()["react-dom"])) {

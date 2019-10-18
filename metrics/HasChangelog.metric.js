@@ -26,9 +26,9 @@ class HasChangelogMetric extends BaseMetric {
             "result": {
                 "type": "boolean"
             }
-        }
+        };
     }
-    
+
     async verify() {
         return true;
     }

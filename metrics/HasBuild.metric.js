@@ -28,7 +28,7 @@ class HasBuildMetric extends BaseMetric {
             "result": {
                 "type": "boolean"
             }
-        }
+        };
     }
 
     async verify() {
@@ -43,9 +43,7 @@ class HasBuildMetric extends BaseMetric {
         } return {
             result: false
         };
-
     }
-
 }
 
 module.exports = HasBuildMetric;

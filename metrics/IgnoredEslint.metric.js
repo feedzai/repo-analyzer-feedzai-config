@@ -28,7 +28,7 @@ class IgnoredEslintMetric extends BaseMetric {
             "result": {
                 "type": "integer"
             }
-        }
+        };
     }
     async verify() {
         return true;

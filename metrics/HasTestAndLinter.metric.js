@@ -22,12 +22,12 @@ class HasTestAndLinterMetric extends BaseMetric {
         };
     }
 
-   schema() {
+    schema() {
         return {
             "result": {
                 "type": "boolean"
             }
-        }
+        };
     }
 
     async verify() {

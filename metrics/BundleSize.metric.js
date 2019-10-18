@@ -7,10 +7,8 @@ const {
     isInstalled,
     METRIC_GROUPS,
     executeCommand,
-    getFileFolder,
+    getFileFolder
 } = require("@feedzai/analyzer-utilities");
-var fs = require("fs");
-const { getRepoName } = require("@feedzai/analyzer-utilities/repoMethods");
 
 const BaseMetric = require("@feedzai/analyzer-utilities/Base.metric");
 
@@ -44,7 +42,7 @@ class BundleSizeMetric extends BaseMetric {
             {
                 "type": "float"
             }
-        }
+        };
     }
 
     /**
