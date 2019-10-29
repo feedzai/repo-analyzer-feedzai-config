@@ -45,7 +45,7 @@ class CoverageMetric extends BaseMetric {
             "branch": {
                 "type": "float"
             }
-        }
+        };
     }
 
     /**
@@ -53,7 +53,7 @@ class CoverageMetric extends BaseMetric {
      *  @returns {boolean}
      */
     async verify() {
-        if (_.isObject(this.getPackage().scripts) && _.isString(this.getPackage().scripts.build) 
+        if (_.isObject(this.getPackage().scripts) && _.isString(this.getPackage().scripts.build)
         && this.getPackage().scripts.build.includes("rollup")) {
             return false;
         }

@@ -26,9 +26,9 @@ class HasReadmeMetric extends BaseMetric {
             "result": {
                 "type": "boolean"
             }
-        }
+        };
     }
-    
+
     async verify() {
         return true;
     }

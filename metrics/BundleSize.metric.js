@@ -7,10 +7,8 @@ const {
     isInstalled,
     METRIC_GROUPS,
     executeCommand,
-    getFileFolder,
+    getFileFolder
 } = require("@feedzai/analyzer-utilities");
-var fs = require("fs");
-const { getRepoName } = require("@feedzai/analyzer-utilities/repoMethods");
 
 const BaseMetric = require("@feedzai/analyzer-utilities/Base.metric");
 
@@ -44,7 +42,7 @@ class BundleSizeMetric extends BaseMetric {
             {
                 "type": "float"
             }
-        }
+        };
     }
 
     /**
@@ -68,13 +66,12 @@ class BundleSizeMetric extends BaseMetric {
      *  @returns {Object}
      */
     async runWebpack() {
-
         let result;
+
         if (this.getPackage().name === "feedzai-ui-kit") {
             result = await executeCommand(this.getRepoFolder(),
                 "npm run clean && npm run build:webpack -- --hide-modules --profile --json > bundlestats.json ");
-        }
-        else {
+        } else {
             result = await executeCommand(this.getRepoFolder(),
                 "npm run build -- --hide-modules --profile --json > bundlestats.json");
         }
@@ -108,7 +105,6 @@ class BundleSizeMetric extends BaseMetric {
                 // tries to parse again
                 try {
                     parsedOutput = JSON.parse(bundlestats);
-
                 } catch (e2) {
                     logger.error("Imposible to parse Webpack output");
                 }
@@ -127,50 +123,52 @@ class BundleSizeMetric extends BaseMetric {
      */
     async execute() {
         if (this.getPackage().scripts.build.includes("rollup")) {
-            const result = await executeCommand(this.getRepoFolder(), "yarn build react/index,react-dom/index --type=UMD");
-
             return await getFileFolder(`${this.getRepoFolder()}`, "./build/bundle-sizes.json").then((fileOutput) => {
                 const bundlestats = JSON.parse(fileOutput);
                 let jsbundlesize = 0;
-                bundlestats.bundleSizes.forEach(element => {
-                    if (element.filename == "react.production.min.js" || element.filename=="react-dom.production.min.js")
-                        jsbundlesize = element.size
+
+                bundlestats.bundleSizes.forEach((element) => {
+                    if (element.filename === "react.production.min.js"
+                        || element.filename === "react-dom.production.min.js") {
+                        jsbundlesize = element.size;
+                    }
                 });
                 return {
                     result: {
+
                         // Divide by 1000 to get the kb size
-                        // After having the result in MB, it multiply by 100 and divide by 100 to have decimal palces in the output
-                        js: Math.round((jsbundlesize / 1000/1000) * 100) / 100,
+                        // After having the result in MB, it multiply by 100 and
+                        // divide by 100 to have decimal palces in the output
+                        js: Math.round((jsbundlesize / 1000 / 1000) * 100) / 100,
                         css: 0
-                    }
-                }
-            });
-        } else {
-            return await this.runWebpack().then((stats) => {
-                if (!_.isObject(stats)) {
-                    return null;
-                }
-                let sizeCss = 0, sizeJs = 0;
-
-                stats.assets.forEach((asset) => {
-                    if (asset.name.includes(".css")) {
-                        sizeCss += asset.size;
-                    } else if (asset.name.includes(".js")) {
-                        sizeJs += asset.size;
-                    }
-                });
-                return {
-                    result: {
-
-                        // here I divide by 1024 to times in order to covert from bytes to MBytes
-                        // After having the result in MB, it multiply by 100 and divide by 100 to have decimal palces in the output
-                        css: Math.round((sizeCss / 1024 / 1024) * 100) / 100,
-                        js: Math.round((sizeJs / 1024 / 1024) * 100) / 100
                     }
                 };
             });
         }
+        return await this.runWebpack().then((stats) => {
+            if (!_.isObject(stats)) {
+                return null;
+            }
+            let sizeCss = 0, sizeJs = 0;
 
+            stats.assets.forEach((asset) => {
+                if (asset.name.includes(".css")) {
+                    sizeCss += asset.size;
+                } else if (asset.name.includes(".js")) {
+                    sizeJs += asset.size;
+                }
+            });
+            return {
+                result: {
+
+                    // here I divide by 1024 to times in order to covert from bytes to MBytes
+                    // After having the result in MB, it multiply by 100 and 
+                    // divide by 100 to have decimal palces in the output
+                    css: Math.round((sizeCss / 1024 / 1024) * 100) / 100,
+                    js: Math.round((sizeJs / 1024 / 1024) * 100) / 100
+                }
+            };
+        });
     }
 }
 

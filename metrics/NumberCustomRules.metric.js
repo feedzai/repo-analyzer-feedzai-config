@@ -26,7 +26,7 @@ class NumberCustomRulesMetric extends BaseMetric {
             "result": {
                 "type": "integer"
             }
-        }
+        };
     }
 
     async verify() {

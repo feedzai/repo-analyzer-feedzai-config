@@ -26,7 +26,7 @@ class JestVersionMetric extends BaseMetric {
             "result": {
                 "type": "float"
             }
-        }
+        };
     }
 
     async verify() {

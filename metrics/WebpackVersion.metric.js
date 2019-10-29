@@ -21,13 +21,13 @@ class WebpackVersionMetric extends BaseMetric {
             group: METRIC_GROUPS.VERSIONS
         };
     }
-    
+
     schema() {
         return {
             "result": {
                 "type": "float"
             }
-        }
+        };
     }
 
     async verify() {
